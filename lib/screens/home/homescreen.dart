@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:unicode_task/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unicode_task/screens/home/components/containers.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -23,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     loadValue();
   }
 
+
   Future<void> loadValue() async {
     var prefs = await SharedPreferences.getInstance();
     var getname = prefs.getString('name');
@@ -39,6 +41,16 @@ class _HomeScreenState extends State<HomeScreen> {
     location=(getlocation!=""? getlocation: "N/A")!;
     notes=(getnote!=""? getnote: "N/A")!;
     setState(() {});
+  }
+
+
+  LaunchURL(String url) async {
+    if(await canLaunchUrlString(url)){
+      await launchUrlString(url);
+    }
+    else{
+      throw 'could not launch url $url';
+    }
   }
 
   @override
@@ -99,13 +111,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SmallContainer(text: 'contacts', icon: FontAwesomeIcons.solidAddressBook, press: () { Navigator.pushNamed(context, 'contact'); },),
+                        SmallContainer(text: 'contacts', icon: FontAwesomeIcons.solidAddressBook, 
+                          press: () { Navigator.pushNamed(context, 'contact'); },),
 
-                        SmallContainer(text: 'weather', icon: FontAwesomeIcons.cloudBolt, press: () { Navigator.pushNamed(context, 'weather'); },),
+                        SmallContainer(text: 'weather', icon: FontAwesomeIcons.cloudBolt, 
+                          press: () { Navigator.pushNamed(context, 'weather'); },),
 
-                        SmallContainer(text: 'roll a dice', icon: FontAwesomeIcons.dice, press: () { Navigator.pushNamed(context, 'dice');},),
+                        SmallContainer(text: 'roll a dice', icon: FontAwesomeIcons.dice, 
+                          press: () { Navigator.pushNamed(context, 'dice');},),
 
-                        SmallContainer(text: 'surprise', icon: FontAwesomeIcons.solidFaceSurprise, press: () { },),
+                        SmallContainer(text: 'surprise', icon: FontAwesomeIcons.solidFaceSurprise, 
+                          press: () { ;
+                            launchUrlString('https://youtu.be/dQw4w9WgXcQ?feature=shared');
+                          },),
                       ],
                     ),
                     SizedBox(height: 15,),

@@ -64,6 +64,34 @@ class _MyContactsState extends State<MyContacts> {
               fontSize: 30,
               fontWeight: FontWeight.w700
             ),),
+            SizedBox(height: 10,),
+
+            Container(
+              
+              height: 35,
+              decoration: BoxDecoration(
+                color: kSecondaryColor,
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: kThirdColor.withOpacity(0.4),
+                  width: 1
+                )
+              ),
+              child: TextField(
+                style: TextStyle(color: kwhite),
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(vertical: 35*0.32),
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  prefixIcon: Icon(Icons.search, color: kThirdColor.withOpacity(0.7), size: 23,),
+                  hintText: 'Search',
+                  hintStyle: TextStyle(
+                    color: kThirdColor.withOpacity(0.7),
+                    fontSize: 17
+                  )
+                ),
+              ),
+            ),
             
             Expanded(
               child: ListView.builder(

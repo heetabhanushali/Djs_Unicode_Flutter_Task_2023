@@ -21,6 +21,8 @@ class TitleTextField extends StatelessWidget {
           fontWeight: FontWeight.w500
         ),),
         SizedBox(height: 3,),
+
+
         Container(
           padding: EdgeInsets.symmetric(horizontal: 15),
           height: 50,

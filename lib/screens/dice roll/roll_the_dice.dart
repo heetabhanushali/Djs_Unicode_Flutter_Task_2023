@@ -20,8 +20,6 @@ class _DiceRollState extends State<DiceRoll> {
     ActiveDiceImage1 = 'assets/dice-images/dice-$dicenum1.png';
     ActiveDiceImage2 = 'assets/dice-images/dice-$dicenum2.png';
     setState(() { 
-      ActiveDiceImage1 = 'assets/dice-images/dice-$dicenum1.png';
-    ActiveDiceImage2 = 'assets/dice-images/dice-$dicenum2.png';
     });
   }
 
